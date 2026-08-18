@@ -108,4 +108,4 @@ Python 3.12+、SQLite、openpyxl（导入/导出 Excel）、pytest（测试）�
 
 ## 版本
 
-当前版本：0.7.0（固化日报、周报、测试进度三份 Markdown 模板，并创建 emergency-test-reports skill，支撑后续自动化生成测试简报）。
+当前版本：0.8.0（新增 kdocs-fault-list-sync skill，固化金山文档《通信装备故障处理清单》在线下载与解析流程，可获取最新故障设备情况；此前已固化测试简报模板与 emergency-test-reports skill）。
