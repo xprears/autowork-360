@@ -1,6 +1,6 @@
 system_name: 应急通信装备台账管理与测试支撑系统
 current_version: 0.7.0
-last_aligned: "2026-08-18T16:56:10+08:00"
+last_aligned: "2026-08-18T18:16:25+08:00"
 
 architecture:
   pattern: 本地单体工具
@@ -32,12 +32,21 @@ dependencies:
   external_apis:
     外部AI接口: 规划中，仅接入脱敏数据
 
+phase_status:
+  阶段A: 已完成
+  阶段B: 待确认
+  阶段C: 部分启动（正式报告模板、三份简报模板、emergency-test-reports skill、样例输出已就绪；自动生成调度待确认）
+  阶段D: 规划中
+  阶段E: 规划中
+
 known_issues:
-  - 测试报告与日报、周报、测试进度固定模板及 emergency-test-reports skill 已就绪，阶段 C 自动生成方案待用户确认
+  - 阶段 C 基础部分已启动（正式报告模板、三份简报模板、skill、样例输出已就绪），自动生成调度方案待用户确认
   - 风险村台账与全量台账设备数有 2 处出入（大田村 370 手台预置 1 台但全量挂在汉沽街道级、桃园村北斗全量实际 1 台而台账预置 0），属预置数与实际配发数的正常差异，已记录待确认
   - 无人机按“设备类型+区”汇总入库至 equipment_benchmark，不写入 devices 逐台明细；370MHz 不新增“可用状态/配发来源”字段，沿用配置/可用/配发/自购口径
 
 recent_changes:
+  - "2026-08-18: 远程仓库迁移至 GitHub autowork-360，origin 更新并完成推送；提交阶段 C 状态澄清文档；版本维持 0.7.0"
+  - "2026-08-18: 澄清阶段 C 为部分启动而非待启动：正式测试报告模板、三份简报模板、emergency-test-reports skill 及基于模板生成的日报/周报/测试进度样例均已落地，待确认的仅是自动化调度方案；同步更新 WORK_PLAN 与 README 阶段状态；版本维持 0.7.0"
   - "2026-08-18: 固化日报、周报、测试进度三份 Markdown 模板（docs/templates/），新增 docs/测试简报模板说明.md 与 scripts/install_emergency_test_reports_skill.py；创建并安装 emergency-test-reports skill 至 ~/.codex/skills，含模板资产、字段说明、数据口径与脱敏要求；版本 0.6.0 → 0.7.0"
   - "2026-08-18: 形成应急通信装备测试报告固定模板：基于 20260529 报告生成 sources/测试报告/应急通信装备测试报告模板.docx，新增 scripts/make_test_report_template.py 与 docs/测试报告模板说明.md；64 个黄色占位符，保留表7/表8固定清单，修正表5/表6标题；版本 0.5.2 → 0.6.0"
   - "2026-08-18: 落地基准入库方案：新增 equipment/benchmark_ingest.py 与 equipment_benchmark 表，无人机按设备类型+区汇总入库（12 个有数统计单位、合计 41），370MHz 不新增字段；已导入基准表 174 条口径记录，CLI 支持 --benchmark/--metric 查询；单元测试 23 个通过；版本 0.5.1 → 0.5.2"
