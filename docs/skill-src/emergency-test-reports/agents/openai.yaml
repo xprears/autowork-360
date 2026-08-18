@@ -1,0 +1,6 @@
+interface:
+  display_name: "应急通信测试简报生成"
+  short_description: "按固定模板生成应急通信测试日报、周报与轮次进度文档"
+  default_prompt: "使用 $emergency-test-reports 根据项目数据生成本周通信设备测试周报。"
+policy:
+  allow_implicit_invocation: true

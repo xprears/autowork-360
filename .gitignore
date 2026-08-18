@@ -1,0 +1,20 @@
+# 本地数据库与临时导出文件
+data/*.db
+data/*.db-journal
+/tmp导出/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 原始台账与过程资料（可能含敏感信息，不入库）
+sources/
+
+# 根目录台账/统计表（含联系人、电话、内部口径等敏感信息，不入库）
+/*.xlsx
+
+# 导出与生成成果（可能含敏感信息，不入库）
+reports/
+
+# macOS 系统文件
+.DS_Store
