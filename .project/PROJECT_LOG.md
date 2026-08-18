@@ -8,7 +8,7 @@
   - 执行 `git init -b main`，以 main 为默认分支初始化本地仓库
   - 更新 `.gitignore`：根目录 `/*.xlsx` 统一忽略，防止内部统计口径表误入库
   - 首次暂存全部可公开文件，并核对暂存清单，确认未包含 `sources/`、`reports/`、`data/*.db` 与根目录台账/统计表
-  - 已收到远程私有仓库地址 `https://github.com/xprears/-`，确认仓库可访问，执行首次提交并推送
+  - 已收到远程私有仓库地址 `https://github.com/xprears/360auto` 并同步更新 origin；验证时新地址暂返回 Repository not found，待用户确认准确地址后完成推送
 
 ## [2026-08-18] - 固化日报、周报、测试进度模板并创建 skill
 - **执行人**：AI 智能体（Codex）
