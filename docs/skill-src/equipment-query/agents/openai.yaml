@@ -1,0 +1,4 @@
+interface:
+  display_name: "设备台账查询"
+  short_description: "查询并汇总应急通信装备台账、风险村设备与基准统计口径，支持导出 Excel 明细"
+  default_prompt: "使用 $equipment-query 查询天津市宝坻区装备台账并导出明细。"

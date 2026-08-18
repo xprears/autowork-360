@@ -3,6 +3,9 @@ data/*.db
 data/*.db-journal
 /tmp导出/
 
+# 已确认脱敏的预置数据库，允许入库
+!data/equipment.db
+
 # Python 缓存
 __pycache__/
 *.pyc

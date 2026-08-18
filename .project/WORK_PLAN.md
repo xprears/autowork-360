@@ -19,6 +19,7 @@
 - [x] 新增基准汇总表 equipment_benchmark：无人机按“设备类型+区”入库，370MHz 不新增字段，保留配置/可用/配发/自购口径，CLI 支持 --benchmark 查询 <!-- id: 12 -->
 - [x] 将《应急通信装备测试报告》原文转为固定模板：docx 占位符模板 + scripts/make_test_report_template.py + 字段说明 <!-- id: 13 -->
 - [x] 固化日报、周报、测试进度三份 Markdown 固定模板，并创建 emergency-test-reports skill 支撑后续自动生成 <!-- id: 14 -->
+- [x] 新增 equipment-query 台账查询 skill 与预置数据库，供 Trae、Workbuddy、Codex 直接查询/汇总/导出 <!-- id: 15 -->
 
 ### 当前待确认
 - [x] 数据口径已确认以《应急装备数量统计（内部）-20260722.xlsx》Sheet1 为准；无人机按“设备类型+区”入库，370MHz 不新增字段，已随任务 12 实施

@@ -45,49 +45,47 @@
 
 ## 快速开始
 
-环境要求：Python 3.12+，首次使用先安装依赖。
+环境要求：Python 3.12+。
+
+仓库已附带确认脱敏后的预置数据库 `data/equipment.db`，日常使用直接查询，不需要先导入。
 
 ```bash
-# 1. 安装依赖
+# 1. 首次使用先安装依赖
 python3 -m pip install -r requirements.txt
 
-# 2. 导入台账（将 xlsx 导入本地 SQLite 数据库）
-python3 -m equipment.ingest sources/设备台账/全量设备.xlsx
-
-# 2.1 有新台账文件时全量重构数据库（先清空设备表再导入）
-python3 -m equipment.ingest sources/设备台账/全量设备.xlsx --rebuild
-
-# 3. 导入风险村台账（风险村是全量台账的特殊范围，189 个村）
-python3 -m equipment.risk_ingest 通信保障重点村应急通信方式统计V3.xlsx
-
-# 3.1 风险村台账更新后重建（先清空风险村表再导入）
-python3 -m equipment.risk_ingest 通信保障重点村应急通信方式统计V3.xlsx --rebuild
-
-# 3.2 导入《应急装备数量统计（内部）》基准汇总（无人机等按“设备类型+区”入库）
-python3 -m equipment.benchmark_ingest 应急装备数量统计（内部）-20260722.xlsx --rebuild
-
-# 3.3 查询基准汇总：无人机按区分布、370MHz 配发/自购/配置/可用
-python3 -m equipment.cli --benchmark --device-type 无人机
-python3 -m equipment.cli --benchmark --device-type 370MHz手持终端
-
-# 4. 查询：宝坻区全部设备汇总
+# 2. 查询：宝坻区全部设备汇总
 python3 -m equipment.cli --district 宝坻区 --summary
 
-# 5. 查询：仅风险村设备 / 排除风险村的其余范围
-python3 -m equipment.cli --risk-only --summary
-python3 -m equipment.cli --exclude-risk --summary
-
-# 6. 列出风险村清单（区/街镇/村名/来源行）
-python3 -m equipment.cli --risk-list
-
-# 7. 查询：按区划分类统计（市级委办局/区应急管理局/行政区划/其他/待定）
-python3 -m equipment.cli --region-category 区应急管理局 --summary
-
-# 8. 查询：大钟庄镇北斗终端明细并导出 Excel 到 reports/
+# 3. 查询并导出：大钟庄镇北斗终端明细
 python3 -m equipment.cli --district 宝坻区 --town 大钟庄镇 --device-type 北斗终端 --export reports/结果.xlsx
+
+# 4. 查看全部参数
+python3 -m equipment.cli --help
 ```
 
-详细参数见 `python3 -m equipment.cli --help`。
+## AI 助手使用
+
+本项目为 Trae、Workbuddy、Codex 等 AI 助手提供了 `equipment-query` skill：
+
+- skill 源文件：`docs/skill-src/equipment-query/SKILL.md`；
+- AI 助手应先读取 `AGENTS.md`，收到台账查询、汇总、口径核对或 Excel 导出需求时读取该 skill 后再执行命令；
+- 安装到 Codex：`python3 scripts/install_equipment_query_skill.py`；
+- 安装到 Trae/Workbuddy：用 `python3 scripts/install_equipment_query_skill.py --target <该工具实际 skills 目录>`；若工具不支持该目录，直接让其读取项目内 skill 源文件即可。
+
+## 数据更新
+
+以下命令仅在原始台账更新后使用，日常查询不需要执行。
+
+```bash
+# 全量设备台账更新后重建
+python3 -m equipment.ingest sources/设备台账/全量设备.xlsx --rebuild
+
+# 风险村台账更新后重建
+python3 -m equipment.risk_ingest 通信保障重点村应急通信方式统计V3.xlsx --rebuild
+
+# 基准汇总更新后重建
+python3 -m equipment.benchmark_ingest 应急装备数量统计（内部）-20260722.xlsx --rebuild
+```
 
 ## 固定模板与测试简报生成
 
@@ -104,8 +102,8 @@ Python 3.12+、SQLite、openpyxl（导入/导出 Excel）、pytest（测试）�
 
 - 所有数据本地存储，不访问外网；
 - 涉密数据（联系人、电话号码等）一律不录入系统；后续接入外部 AI 前必须脱敏；
-- 本地数据库（`data/`）、原始资料（`sources/`）、导出成果（`reports/`）默认不进入 Git 仓库，请自行保管。
+- 仓库仅纳入已确认脱敏的 `data/equipment.db` 预置库；原始资料（`sources/`）、根目录统计表、导出成果（`reports/`）不进入 Git 仓库，请自行保管。
 
 ## 版本
 
-当前版本：0.8.0（新增 kdocs-fault-list-sync skill，固化金山文档《通信装备故障处理清单》在线下载与解析流程，可获取最新故障设备情况；此前已固化测试简报模板与 emergency-test-reports skill）。
+当前版本：0.9.0（新增 equipment-query 台账查询 skill，供 Trae、Workbuddy、Codex 使用；精简 README 快速开始；将确认脱敏后的预置数据库纳入仓库）。

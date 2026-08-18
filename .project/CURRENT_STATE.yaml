@@ -1,6 +1,6 @@
 system_name: 应急通信装备台账管理与测试支撑系统
-current_version: 0.8.0
-last_aligned: "2026-08-18T18:16:25+08:00"
+current_version: 0.9.0
+last_aligned: "2026-08-18T19:30:00+08:00"
 
 architecture:
   pattern: 本地单体工具
@@ -45,6 +45,7 @@ known_issues:
   - 无人机按“设备类型+区”汇总入库至 equipment_benchmark，不写入 devices 逐台明细；370MHz 不新增“可用状态/配发来源”字段，沿用配置/可用/配发/自购口径
 
 recent_changes:
+  - "2026-08-18: 新增 equipment-query 台账查询 skill（SKILL.md、CLI/references、安装脚本），精简 README 快速开始，并将已确认脱敏的预置数据库 data/equipment.db 纳入仓库；供 Trae、Workbuddy、Codex 直接查询/汇总/导出；版本 0.8.0 → 0.9.0"
   - "2026-08-18: 新增 kdocs-fault-list-sync skill：固化金山文档《通信装备故障处理清单》在线下载与 xlsx 解析流程，含纯标准库解析脚本与 3 个工作表结构说明，确保后续可一键获取最新故障设备情况；版本 0.7.0 → 0.8.0"
   - "2026-08-18: 远程仓库迁移至 GitHub autowork-360，origin 更新并完成推送；提交阶段 C 状态澄清文档；版本维持 0.7.0"
   - "2026-08-18: 澄清阶段 C 为部分启动而非待启动：正式测试报告模板、三份简报模板、emergency-test-reports skill 及基于模板生成的日报/周报/测试进度样例均已落地，待确认的仅是自动化调度方案；同步更新 WORK_PLAN 与 README 阶段状态；版本维持 0.7.0"

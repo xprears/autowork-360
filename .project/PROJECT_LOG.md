@@ -2,6 +2,17 @@
 
 本文档采用倒序记录项目的所有实质性进展。
 
+## [2026-08-18] - 新增 equipment-query skill 并精简 README
+- **执行人**：AI 智能体
+- **更新内容**：
+  - 新增 `docs/skill-src/equipment-query/`：SKILL.md、references/cli.md、references/data.md、agents/openai.yaml
+  - 新增 `scripts/install_equipment_query_skill.py`，可将 skill 安装到 Codex 默认目录或 Trae/Workbuddy 等工具自定义 skills 目录
+  - 精简 README 快速开始：日常查询直接使用预置数据库，导入/重建命令移至“数据更新”小节
+  - 更新 AGENTS.md：新增 AI 查询规范与台账查询任务触发规则
+  - 将已确认脱敏的 `data/equipment.db` 作为预置库纳入 Git 仓库，`.gitignore` 仅放行该文件
+  - 验证：quick_validate 校验通过；数据库完整性检查通过；扫描全部文本列未发现联系人、电话、邮箱、身份证、家庭住址等敏感信息
+  - 版本号 0.8.0 → 0.9.0
+
 ## [2026-08-18] - 创建 kdocs-fault-list-sync 技能
 - **执行人**：AI 智能体（Codex）
 - **更新内容**：
